@@ -1,6 +1,8 @@
+// modules added
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
 
+// Database connection details
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -8,7 +10,7 @@ const db = mysql.createConnection({
   database: 'employee_management'
 });
 
-
+// Connects to database
 function connectDB() {
   db.connect(err => {
     if (err) throw err;
@@ -17,7 +19,7 @@ function connectDB() {
   });
 }
 
-
+// Function will start the app and give prompt
 function startApp() {
   inquirer
     .prompt([
@@ -37,6 +39,7 @@ function startApp() {
         ]
       }
     ])
+    // choices that can be selected 
     .then(answer => {
       switch (answer.action) {
         case 'View all departments':
@@ -84,7 +87,7 @@ function viewRoles() {
     startApp();
   });
 }
-
+// shows information of employees
 function viewEmployees() {
   const query =
     'SELECT ' +
@@ -220,5 +223,5 @@ function updateEmployeeRole() {
     });
 }
 
-
+// initiates connection
 connectDB();
