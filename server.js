@@ -196,7 +196,6 @@ function addEmployee() {
     });
 }
 
-// Modified updateEmployeeRole function
 function updateEmployeeRole() {
   inquirer
     .prompt([
@@ -212,13 +211,14 @@ function updateEmployeeRole() {
       }
     ])
     .then(answer => {
-      const query = 'UPDATE employee, role SET employee.role_id = role.id WHERE employee.id = ? AND role.title = ?';
-      db.query(query, [answer.employee_id, answer.new_role_title], (err, results) => {
+      const query = 'UPDATE employee SET role_id = (SELECT id FROM role WHERE title = ?) WHERE id = ?';
+      db.query(query, [answer.new_role_title, answer.employee_id], (err, results) => {
         if (err) throw err;
         console.log(`Employee with id ${answer.employee_id} updated to new role title "${answer.new_role_title}".`);
         startApp();
       });
     });
 }
+
 
 connectDB();
