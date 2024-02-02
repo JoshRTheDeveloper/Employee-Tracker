@@ -13,6 +13,7 @@ Node Js
 * [Contributors](#contributors)
 * [Test](#test)
 * [Email](#email)
+* [Future Development](#future-devlopment)
 
 
 ## Usage Information
@@ -35,6 +36,9 @@ https://github.com/JoshRTheDeveloper
 
 ## Email
 raider4414@GMAIL.COM
+
+## Future development
+App crashes because of errors - better error handling. 
 
 ## License
 
